@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="01-sesionstorage-ejemplo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="contenedor" id="contenedor">
+      <h1>Inicio de Sesión</h1>
+      <form id="formularioLogin" class="formulario">
+        <label for="nombreUsuario">Nombre de Usuario:</label>
+        <input
+          type="text"
+          id="nombreUsuario"
+          placeholder="Ingresa tu nombre"
+          required
+        />
+        <button type="submit" class="boton">Ingresar</button>
+      </form>
+      <br /><br />
+      <button id="btnClases" class="boton">Clases</button>
+      <p id="parrafo"></p>
+    </div>
+
+    <script>
+      const formu = document.getElementById("formularioLogin");
+      formu.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const nomUSu = document.getElementById("nombreUsuario").value.trim();
+        if (nomUSu) {
+          sessionStorage.setItem("usuarioActual", nomUSu);
+          sessionStorage.setItem("paginaAnterior", window.location.href);
+          window.location.href = "dashboard.html";
+        } else {
+          alert("Error. Usuario invalido.");
+        }
+      });
+
+      document.getElementById("btnClases").addEventListener("click", () => {
+        // const lstclases = document.getElementById("contenedor").classList;
+        // const cantClases = lstclases.length;
+        // alert(lstclases + " : " + cantClases);
+        // // Agrega una clase a un elemnto
+        // lstclases.add("sombra");
+
+        // //True: si la clase exite en el elemento
+        // alert(lstclases.contains("sombra"));
+
+        // //elimina una clase del elemento
+        // lstclases.remove("sombra");
+
+        // // toogle(clase): agrega la clase si no esta
+        // lstclases.toggle("sombra");
+
+        // alert(lstclases + " : " + cantClases);
+
+        // // replace(old,new) reemplaza la clase old por new
+        // lstclases.replace("contenedor", "contenedor2");
+
+        // const lstatr = document.getElementById("contenedor").attributes;
+        // for (const elem of lstatr) {
+        //   alert(`${elem.name}: ${elem.value}`);
+        // }
+        // nodeName: devuelve el nombre del nodo
+        alert(document.querySelector("button").nodeName);
+
+        //textContent obtiene o modifica contenido de la etiqueta
+
+        // innerHTML: inserta HTML en la etiqueta
+
+        // outerText
+        alert(document.querySelector(".contenedor").outerHTML);
+
+        // setHTML: agrega Html a la etiqueta de forma segura. Evita la inyeccion
+        // html malicioso: que no tenga JS
+      });
+    </script>
+  </body>
+</html>

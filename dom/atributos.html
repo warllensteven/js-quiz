@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion de atributos</title>
+  </head>
+  <body>
+    <p align="left" id="parrafo">Campuslands</p>
+
+    <button onclick="obtenerAtributos()">Obtener datos</button>
+    <button onclick="cambiarAtributos()">Cambiar atributos</button>
+    <button onclick="ocultarAtributos()">Ocultar parrafo</button>
+  </body>
+  <script>
+    const parrafo = document.getElementById("parrafo");
+    function obtenerAtributos() {
+      alert(parrafo.getAttribute("align"));
+    }
+
+    function cambiarAtributos() {
+      const alineacion = parrafo.getAttribute("align");
+      parrafo.setAttribute("align", alineacion == "center" ? "left" : "center");
+    }
+
+    function ocultarAtributos() {
+      const valor = parrafo.toggleAttribute("hidden");
+      const button = document.querySelectorAll("button")[2];
+      button.innerText = valor ? "Mostrar parrafo" : "Ocultar parrafo";
+    }
+  </script>
+</html>
